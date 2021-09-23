@@ -191,7 +191,7 @@ set $darkgray #1d2021
 set $lightgray #bdae93
 
 bar {
-        status_command i3blocks -c /home/carlos/.config/i3/i3blocks.conf
+        status_command SCRIPT_DIR=/home/carlos/.config/i3/i3blocks_scripts i3blocks -c /home/carlos/.config/i3/i3blocks.conf
         position top
         output DP-1
         separator_symbol "::"
@@ -211,11 +211,13 @@ client.unfocused        $darkgray $darkgray $lightgray $purple $darkgray
 client.urgent           $red $red $white $red $red
 
 # binds
-bindsym Mod1+Shift+X exec i3lock # lock system
+bindsym Mod1+Shift+X exec i3lock -c 111111 # lock system
 
-exec-always xrandr --output DVI-D-1 --off --output HDMI-1 --mode 1600x900 --pos 0x180 --rotate normal --output DP-1 --primary --mode 1920x1080 --pos 1600x0 --rotate normal
+exec_always xrandr --output DVI-D-1 --off --output HDMI-1 --mode 1600x900 --pos 0x180 --rotate normal --output DP-1 --primary --mode 1920x1080 --pos 1600x0 --rotate normal --rate 144
+exec_always --no-startup-id /usr/bin/feh --bg-fill '/home/carlos/Pictures/wallpaper2.jpg'
 
 # gaps
 gaps inner 10
 gaps outer 0
 smart_gaps on
+

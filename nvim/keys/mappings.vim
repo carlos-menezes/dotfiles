@@ -2,7 +2,6 @@
 inoremap <silent><expr><TAB>
   \ pumvisible() ? “\<C-n>” : “\<TAB>”
 nmap <silent> <C-g> :ALEGoToDefinition<CR>
-nmap <silent> <C-b> :ALEGoBaackFromDefinition<CR>
 nmap <silent> <C-f> :ALEFindReferences<CR>
 
 " Better nav for omnicomplete
