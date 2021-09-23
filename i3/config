@@ -191,7 +191,7 @@ set $darkgray #1d2021
 set $lightgray #bdae93
 
 bar {
-        status_command i3blocks 
+        status_command i3blocks -c /home/carlos/.config/i3/i3blocks.conf
         position top
         output DP-1
         separator_symbol "::"
