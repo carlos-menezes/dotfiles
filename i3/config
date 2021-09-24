@@ -211,7 +211,7 @@ client.unfocused        $darkgray $darkgray $lightgray $purple $darkgray
 client.urgent           $red $red $white $red $red
 
 # binds
-bindsym Mod1+Shift+X exec i3lock -c 111111 # lock system
+bindsym $mod+Shift+X exec i3lock -c 111111 # lock system
 
 exec_always xrandr --output DVI-D-1 --off --output HDMI-1 --mode 1600x900 --pos 0x180 --rotate normal --output DP-1 --primary --mode 1920x1080 --pos 1600x0 --rotate normal --rate 144
 exec_always --no-startup-id /usr/bin/feh --bg-fill '/home/carlos/Pictures/wallpaper2.jpg'
