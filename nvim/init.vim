@@ -15,11 +15,11 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'plasticboy/vim-markdown'
   Plug 'nvim-lua/completion-nvim'
 
-  " GUI
+  " GUI / Improvements
   Plug 'itchyny/lightline.vim'
   Plug 'morhetz/gruvbox'
-
-  " Improvements
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
   Plug 'tpope/vim-surround'
 call plug#end()
 
@@ -189,4 +189,7 @@ nnoremap <leader><leader> <c-^>
 
 " Inlay hints for the whole file
 nnoremap <Leader>T :lua require'lsp_extensions'.inlay_hints()
+
+map <C-p> :Files<CR>
+nmap <leader>; :Buffers<CR>
 
