@@ -116,6 +116,10 @@ function! LightlineFilename()
 	return expand('%:t') !=# '' ? @% : '[No Name]'
 endfunction
 
+" discord configs
+let g:presence_main_image = "file"
+
+
 " rust configs
 let g:rustfmt_autosave = 1
 let g:rustfmt_emit_files = 1
