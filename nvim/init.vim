@@ -37,18 +37,21 @@ end
 nvim_lsp.rust_analyzer.setup({
 	on_attach=on_attach,
 	settings = {
-	["rust-analyzer"] = {
-	assist = {
-	importGranularity = "module",
-	importPrefix = "by_self",
-	},
-	cargo = {
-	loadOutDirsFromCheck = true
-	},
-	procMacro = {
-	enable = true
-	},
-	}
+		["rust-analyzer"] = {
+			assist = {
+				importGranularity = "module",
+				importPrefix = "by_self",
+			},
+			cargo = {
+				loadOutDirsFromCheck = true
+			},
+			procMacro = {
+				enable = true
+			},
+			completion = {
+				addCallParenthesis = true
+			}
+		}
 	}
 })
 
@@ -139,7 +142,7 @@ set encoding=utf-8
 set scrolloff=2
 set showcmd
 set hidden
-"set nowrap
+" set nowrap
 set nojoinspaces
 let g:sneak#s_next = 1
 let g:vim_markdown_new_list_item_indent = 0
@@ -156,6 +159,8 @@ set shiftwidth=8
 set softtabstop=8
 set tabstop=8
 set noexpandtab
+
+set fsync
 
 " GUI settings
 set guioptions-=T " Remove toolbar
