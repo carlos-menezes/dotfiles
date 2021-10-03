@@ -102,7 +102,9 @@ scrolling:
   history: 10000
 
   # Scrolling distance multiplier.
-  #multiplier: 3
+  multiplier: 3
+
+  auto_scroll: true
 
 # Font configuration
 font:
@@ -722,15 +724,15 @@ font:
 #
 # If the same trigger is assigned to multiple actions, all of them are executed
 # in the order they were defined in.
-#key_bindings:
+key_bindings:
   #- { key: Paste,                                       action: Paste          }
   #- { key: Copy,                                        action: Copy           }
   #- { key: L,         mods: Control,                    action: ClearLogNotice }
   #- { key: L,         mods: Control, mode: ~Vi|~Search, chars: "\x0c"          }
-  #- { key: PageUp,    mods: Shift,   mode: ~Alt,        action: ScrollPageUp,  }
-  #- { key: PageDown,  mods: Shift,   mode: ~Alt,        action: ScrollPageDown }
-  #- { key: Home,      mods: Shift,   mode: ~Alt,        action: ScrollToTop,   }
-  #- { key: End,       mods: Shift,   mode: ~Alt,        action: ScrollToBottom }
+  - { key: PageUp,    mods: Shift,   action: ScrollPageUp,  }
+  - { key: PageDown,  mods: Shift,   action: ScrollPageDown }
+  - { key: Home,      mods: Shift,   action: ScrollToTop,   }
+  - { key: End,       mods: Shift,   action: ScrollToBottom }
 
   # Vi Mode
   #- { key: Space,  mods: Shift|Control, mode: ~Search,    action: ToggleViMode            }
