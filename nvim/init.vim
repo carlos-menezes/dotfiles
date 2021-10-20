@@ -24,6 +24,7 @@ call plug#begin(stdpath('data') . '/plugged')
 
 	" Integrations
 	Plug 'andweeb/presence.nvim'
+	Plug 'iamcco/markdown-preview.nvim'
 call plug#end()
 
 
@@ -175,7 +176,7 @@ set diffopt+=iwhite " No whitespace in vimdiff
 " Make diffing better: https://vimways.org/2018/the-power-of-diff/
 set diffopt+=algorithm:patience
 set diffopt+=indent-heuristic
-set colorcolumn=80 " and give me a colored column
+set colorcolumn=120 " and give me a colored column
 set showcmd " Show (partial) command in status line.
 set mouse=a " Enable mouse usage (all modes) in terminals
 set shortmess+=c " don't give |ins-completion-menu| messages.
@@ -202,3 +203,7 @@ nnoremap <Leader>T :lua require'lsp_extensions'.inlay_hints()
 map <C-p> :Files<CR>
 nmap <leader>; :Buffers<CR>
 
+" mkd binds
+nmap <C-s> <Plug>MarkdownPreview
+nmap <M-s> <Plug>MarkdownPreviewStop
+nmap <S-p> <Plug>MarkdownPreviewToggle

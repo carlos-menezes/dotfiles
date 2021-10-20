@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# take screenshot
+scrot -m '/tmp/lock.png'
+
+# use ImageMagick to add blur to image
+convert /tmp/lock.png -blur 0x9 /tmp/lock.png
+
+# start i3lock with background image
+i3lock -i /tmp/lock.png
+
+# delete temp image
+rm -rf /tmp/lock.png
