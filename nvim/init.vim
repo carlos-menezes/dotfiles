@@ -7,7 +7,9 @@ call plug#begin(stdpath('data') . '/plugged')
 	" Syntactic lang support
 	Plug 'neovim/nvim-lspconfig'
 	Plug 'nvim-lua/lsp_extensions.nvim'
-	Plug 'nvim-lua/completion-nvim'
+	" Plug 'nvim-lua/completion-nvim'
+	Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+	Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 	Plug 'cespare/vim-toml'
 	Plug 'stephpy/vim-yaml'
 	Plug 'rust-lang/rust.vim'
@@ -23,37 +25,34 @@ call plug#begin(stdpath('data') . '/plugged')
 	Plug 'tpope/vim-surround'
 
 	" Integrations
-	Plug 'andweeb/presence.nvim'
 	Plug 'iamcco/markdown-preview.nvim'
 call plug#end()
 
 
 " LSP configuration
-lua << END
+lua << EOF
 local nvim_lsp = require'lspconfig'
 local on_attach = function(client)
 	require'completion'.on_attach(client)
 end
 
+
 nvim_lsp.rust_analyzer.setup({
-	on_attach=on_attach,
-	settings = {
-		["rust-analyzer"] = {
-			assist = {
-				importGranularity = "module",
-				importPrefix = "by_self",
-			},
-			cargo = {
-				loadOutDirsFromCheck = true
-			},
-			procMacro = {
-				enable = true
-			},
-			completion = {
-				addCallParenthesis = true
-			}
-		}
-	}
+    on_attach=on_attach,
+    settings = {
+        ["rust-analyzer"] = {
+            assist = {
+                importGranularity = "module",
+                importPrefix = "by_self",
+            },
+            cargo = {
+                loadOutDirsFromCheck = true
+            },
+            procMacro = {
+                enable = true
+            },
+        }
+    }
 })
 
 local on_attach = function(client, bufnr)
@@ -82,20 +81,7 @@ local on_attach = function(client, bufnr)
  	buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
  	buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 end
-
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
-local servers = { 'rust_analyzer', 'ccls' }
-for _, lsp in ipairs(servers) do
-	nvim_lsp[lsp].setup {
-	on_attach = on_attach,
-	flags = {
-		debounce_text_changes = 150,
-		}
-	}
-end
-
-END
+EOF
 
 colorscheme gruvbox
 
@@ -126,6 +112,7 @@ let g:rustfmt_autosave = 1
 let g:rustfmt_emit_files = 1
 let g:rustfmt_fail_silently = 0
 let g:rust_clip_command = 'xclip -selection clipboard'
+let g:coq_settings = { 'auto_start': v:true }
 
 " Completion
 set completeopt=menuone,noinsert,noselect
@@ -153,9 +140,9 @@ set printoptions=paper:letter
 set signcolumn=yes
 
 " Use wide tabs
-set shiftwidth=8
-set softtabstop=8
-set tabstop=8
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
 set noexpandtab
 
 set fsync
@@ -184,11 +171,6 @@ set shortmess+=c " don't give |ins-completion-menu| messages.
 
 " Leave paste mode when leaving insert mode
 autocmd InsertLeave * set nopaste
-
-" Binds
-" Use <Tab> and <S-Tab> to navigate through popup menu
-inoremap <expr> <Tab>	pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " use <Tab> as trigger keys
 imap <Tab> <Plug>(completion_smart_tab)

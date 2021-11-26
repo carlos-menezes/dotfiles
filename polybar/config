@@ -18,9 +18,6 @@ foreground = ${colors.foreground}
 line-size = 3
 line-color = #f00
 
-border-size = 4
-border-color = #00000000
-
 padding-left = 0
 padding-right = 2
 
@@ -105,6 +102,7 @@ interval = 2
 format-prefix = ""
 format-prefix-foreground = ${colors.foreground-alt}
 label = CPU: %percentage:2%%
+format-underline = #fff
 
 [module/memory]
 type = internal/memory
@@ -112,6 +110,7 @@ interval = 2
 ;format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 label = MEM: %percentage_used%%
+format-underline = #fff
 
 [module/wlan]
 type = internal/network
@@ -121,6 +120,7 @@ interval = 3.0
 format-connected = <ramp-signal> <label-connected>
 label-connected = WLAN: %local_ip% @ %essid%
 
+format-underline = #fff
 format-disconnected =
 
 ramp-signal-0 = 
@@ -145,6 +145,7 @@ format-disconnected =
 type = internal/date
 interval = 1
 
+format-underline = #fff
 date = %d/%m/%Y
 
 time = %H:%M:%S
@@ -160,7 +161,7 @@ format-volume = <label-volume> <bar-volume>
 label-volume = VOL: %percentage%%
 label-volume-foreground = ${root.foreground}
 
-label-muted = 🔇 muted
+label-muted = 🔇 MUTED 
 label-muted-foreground = #666
 
 bar-volume-width = 1 
@@ -179,37 +180,6 @@ bar-volume-fill-font = 0
 bar-volume-empty = ─
 bar-volume-empty-font = 0
 bar-volume-empty-foreground = ${colors.foreground-alt}
-
-[module/powermenu]
-type = custom/menu
-
-expand-right = true
-
-format-spacing = 1
-
-label-font = 1
-
-label-open = ⏻
-label-open-foreground = ${colors.foreground}
-label-close = ✗
-label-close-foreground = ${colors.secondary}
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
-
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
-
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
-
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
 
 [settings]
 screenchange-reload = true

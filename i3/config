@@ -180,7 +180,7 @@ client.urgent           $red $red $white $red $red
 bindsym $mod+Shift+X exec /home/carlos/.config/i3/lock
 
 exec_always xrandr --output DVI-D-1 --off --output HDMI-1 --mode 1600x900 --pos 0x180 --rotate normal --output DP-1 --primary --mode 1920x1080 --pos 1600x0 --rotate normal --rate 144
-exec_always --no-startup-id /usr/bin/feh --bg-fill '/home/carlos/Pictures/wallpaper2.jpg'
+exec_always --no-startup-id /usr/bin/feh --bg-fill '/home/carlos/.config/wallpaper/wallpaper.png'
 
 #bindsym --release Print exec "scrot -m '/home/carlos/Pictures/screenshots/%s_%H%M_%d.%m.%Y_$wx$h.png'"
 #bindsym --release Shift+Print exec "scrot -s '/home/carlos/Pictures/screenshots/%s_%H%M_%d%m%Y_$wx$h.png'"
